@@ -107,6 +107,8 @@
         var row_array = new Array();        
         var temp = 0;
         var temp_delete = 0;
+        var count_but1 = 0;
+        var count_but2 = 0;
 
         var rowspan_temp=0;
        
@@ -115,6 +117,27 @@
             
             var row_obj
 
+            var obj = event.srcElement;
+            if (obj.id == "but1")
+            {
+                // alert('1');
+                count_but1++;
+                var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = count_but1 + 1;
+                var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = count_but1 + 1;
+                var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = count_but1 + 1;
+
+
+
+
+
+            }
+            if (obj.id == "but2")
+            {
+                count_but2++;
+                var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = count_but2+ 1;
+                var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = count_but2 + 1;
+                var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = count_but2 + 1;
+            }
                      
             row = r.parentNode.parentNode.rowIndex;
             row_array[temp]=row;
@@ -124,7 +147,7 @@
                 row_count = 0;              
             }
             
-
+            
             
                                              
             row_count++;
@@ -210,10 +233,8 @@
             var str_class="row_"+row.toString()
             var row_len = document.getElementById('doe_1').getElementsByClassName(str_class).length;
 
-            var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = row_len+1;
-            var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = row_len+1;
-            var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = row_len+1;
-            rowspan_count = row_len + 1;
+            
+           
 
             temp++;
         }
@@ -224,10 +245,24 @@
 
                                     
             row_count--;
-            var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = i - rowspan_temp;
-            var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = i - rowspan_temp;
-            var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = i - rowspan_temp;
-           
+
+            var obj = event.srcElement;
+            if (obj.id == "but1") {
+                
+                count_but1--;
+                var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = count_but1 ;
+                var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = count_but1 ;
+                var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = count_but1 ;
+            }
+            if (obj.id == "but2") {
+                count_but2--;
+                var mums_2_0 = document.getElementById('doe_1').rows[row].cells[0].rowSpan = count_but2 ;
+                var mums_2_1 = document.getElementById('doe_1').rows[row].cells[1].rowSpan = count_but2 ;
+                var mums_2_2 = document.getElementById('doe_1').rows[row].cells[2].rowSpan = count_but2 ;
+            }
+
+
+                     
             var tab = document.getElementById("doe_1");
             var show = document.getElementById("show_len");
             var value = tab.rows.length;
@@ -332,7 +367,7 @@
                     <td >a</td>
                      <td >b</td>
                      <td>
-                         <input type="button" onclick="index(this)" value="+" />
+                         <input id="but1" type="button" onclick="index(this)" value="+" />
                          <div>c</div>
 
                      </td>
@@ -374,7 +409,7 @@
                 <tr id="ee" style="height:20px">
                      <td></td>
                      <td></td>
-                     <td><input type="button" onclick="index(this)" value="+" /></td>
+                     <td><input id="but2" type="button" onclick="index(this)" value="+" /></td>
                      <td></td>
                      <td></td>
                      <td></td>
